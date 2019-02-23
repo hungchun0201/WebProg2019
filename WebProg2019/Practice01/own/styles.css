@@ -1,0 +1,215 @@
+@font-face {
+    font-family: AmeryBrush;
+    src: url(AmeryBrush.otf);
+}
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #ccc;
+    z-index: 1;
+}
+
+header {
+    margin: 0 0 0 0;
+    font-family: AmeryBrush;
+    font-size: 50px;
+    background-image: url(trail.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat, no-repeat, repeat, no-repeat;
+    /* position: fixed; */
+    height: 100vh;
+}
+
+header h1,
+header h3 {
+    margin: 0;
+    padding: 100px 0;
+    text-shadow: 5px 5px 20px #ffed4a;
+}
+
+#heading {
+    color: black;
+
+}
+
+#paragraph,
+#tables {
+    background-color: #aaa;
+    padding: 20px 0;
+}
+
+#paragraph p {
+    font-size: 20px;
+}
+
+
+
+.text-center {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#media {
+    padding-bottom: 30px;
+}
+
+#media a {
+
+    font-size: 25px;
+    color: violet;
+    background-color: #f1ef40;
+    border: 1.5px solid black;
+    border-radius: 15px;
+    padding: 5px;
+    margin: 5px;
+    display: block;
+    text-align: center;
+}
+
+#media .song:hover {
+    background-color: red;
+    transition: 0.4s ease;
+}
+
+#media .photo {
+    margin: 10px auto;
+    padding: auto;
+}
+
+#media img {
+    display: block;
+    margin: 0 auto;
+    filter: grayscale(100%);
+    transition: 3s ease-in-out;
+    border-radius: 40px;
+}
+
+#media img:hover {
+    filter: grayscale(0%);
+    transition: 0.5s ease;
+}
+
+iframe {
+    display: block;
+    margin: 0 auto;
+}
+
+ul li {
+    list-style-image: url(arrow.gif);
+    font-size: 30px;
+    vertical-align: middle;
+    margin: 0 auto;
+    width: 550px;
+}
+
+ol li {
+    font-size: 30px;
+    vertical-align: middle;
+    margin: 0 auto;
+    width: 550px;
+}
+
+li a {
+    position: relative;
+    cursor: pointer;
+}
+
+ul li:nth-child(1)>a:hover {
+    color: rgb(0, 155, 202);
+}
+
+ul li:nth-child(2)>a:hover {
+    color: #b12bb6;
+}
+
+li:nth-child(1)>a::before {
+    background: rgb(0, 217, 255);
+}
+
+li:nth-child(2)>a::before {
+    background: rgb(247, 0, 255);
+}
+
+li a::before {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    opacity: 0.3;
+    transform: scale3d(0, 1, 1);
+    transform-origin: 0% 50%;
+    transition: transform 0.65s;
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+
+}
+
+li a:hover::before {
+    transform: scale3d(1, 1, 1);
+}
+
+/* #tables {
+    font-size: 20px;
+    margin: 0 auto;
+    width: 600px;
+    height: 400px;
+} */
+
+#tables table {
+    /* display: block;
+    width: 300px;
+    height: 200px; */
+    margin: 0 auto;
+}
+
+.headtype {
+    letter-spacing: 3px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.headtype::after {
+    margin-bottom: 10px;
+    content: "";
+    width: 200px;
+    height: 2px;
+    display: block;
+    background: black;
+    margin: 10px auto;
+}
+
+#displays {
+    padding-bottom: 100px;
+    font-size: 20px;
+}
+
+footer {
+    margin: 0 0 0 0;
+    font-family: AmeryBrush;
+    font-size: 30px;
+    background-image: url(trail.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat, no-repeat, repeat, no-repeat;
+    height: 300px;
+}
+
+footer h1 {
+    margin: 0;
+    padding: 100px 0;
+    text-shadow: 5px 5px 20px #ffed4a;
+    text-align: center;
+}

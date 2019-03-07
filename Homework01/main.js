@@ -55,7 +55,6 @@ function assignItem(context) {
 
 input.addEventListener('keydown', event => {
     if (event.keyCode === 13 && event.target.value !== "") {
-        console.log(section_element.childNodes.length); 
         if (section_element.childNodes.length===3) {
             if (interface_ul === Object) {
                 interface_ul = init_ul();

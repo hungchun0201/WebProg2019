@@ -131,6 +131,11 @@ input[type='checkbox'] {
     transition: opacity 0.3s;
     height: 100%;
 }
+.todo-app__item-checked
+{
+    text-decoration: line-through;
+    color:#aaa;
+}
 
 .todo-app__footer {
     width: 100%;
@@ -177,11 +182,11 @@ input[type='checkbox'] {
 
 .todo-app__clean {
     vertical-align: middle;
+    padding: 5px;
 }
 
 .todo-app__clean button {
     border: none;
-    padding: 5px;
     border: 1px solid transparent;
     font-size: 0.8em;
     font-weight: inherit;

@@ -18,15 +18,14 @@
         </section>
         <footer class="todo-app__footer" id="todo-footer">
             <div class="todo-app__total">
-                <span>0 left</span>
+                <span id="todo-count">0 left</span>
             </div>
             <ul class="todo-app__view-buttons">
-                <button>ALL</button>
-                <button>Active</button>
-                <button>Completed</button>
+                <button id="All" onclick="ShowAll()">ALL</button>
+                <button id="Active" onclick="ShowActive()">Active</button>
+                <button id="Completed" onclick="ShowCompleted()">Completed</button>
             </ul>
             <div class="todo-app__clean">
-                <button >clear completed</button>
             </div>
         </footer>
     </div>

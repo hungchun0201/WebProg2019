@@ -6,29 +6,116 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>TODO APP in pure JS</title>
     <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+    <link rel="stylesheet" href="calender.css">
 </head>
 
 <body>
-    <div id="root" class="todo-app__root">
-        <header class="todo-app__header">
-            <h1 class="todo-app__title">TODOS</h1>
-        </header>
-        <section class="todo-app__main">
-            <input type="text" class="todo-app__input" placeholder="What is your main focus for today?" >
-        </section>
-        <footer class="todo-app__footer" id="todo-footer">
-            <div class="todo-app__total">
-                <span id="todo-count">0 left</span>
+    <header class="todo-app__header">
+        <h1 class="todo-app__title">TODOS</h1>
+    </header>
+
+    <div class="todo-app__test">
+        <div id="root" class="todo-app__root">
+            <section class="todo-app__main">
+                <input type="text" class="todo-app__input" placeholder="What is your main focus for today?">
+            </section>
+            <footer class="todo-app__footer" id="todo-footer">
+                <div class="todo-app__total">
+                    <span id="todo-count">0 left in this day</span>
+                </div>
+                <ul class="todo-app__view-buttons">
+                    <button id="All" onclick="ShowAll()">ALL</button>
+                    <button id="Active" onclick="ShowActive()">Active</button>
+                    <button id="Completed" onclick="ShowCompleted()">Completed</button>
+                </ul>
+                <div class="todo-app__clean">
+                </div>
+            </footer>
+            <div class="todo-app__uncompleted">
+
             </div>
-            <ul class="todo-app__view-buttons">
-                <button id="All" onclick="ShowAll()">ALL</button>
-                <button id="Active" onclick="ShowActive()">Active</button>
-                <button id="Completed" onclick="ShowCompleted()">Completed</button>
-            </ul>
-            <div class="todo-app__clean">
+        </div>
+        <div class="calendar-container">
+            <div class="image-container">
+                <div class="image"></div>
             </div>
-        </footer>
+            <div class="calendar">
+                <h2 class="month-title" id="js-month"></h2>
+                <table class="calendar-table">
+                    <thead>
+                        <tr>
+                            <th>日</th>
+                            <th>月</th>
+                            <th>火</th>
+                            <th>水</th>
+                            <th>木</th>
+                            <th>金</th>
+                            <th>土</th>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td onclick="changeSelect()" class="active_day">1</td>
+                            <td onclick="changeSelect()" class="active_day">2</td>
+                        </tr>
+                        <tr>
+                            <td onclick="changeSelect()" class="active_day">3</td>
+                            <td onclick="changeSelect()" class="active_day">4</td>
+                            <td onclick="changeSelect()" class="active_day">5</td>
+                            <td onclick="changeSelect()" class="active_day">6</td>
+                            <td onclick="changeSelect()" class="active_day">7</td>
+                            <td onclick="changeSelect()" class="active_day">8</td>
+                            <td onclick="changeSelect()" class="active_day">9</td>
+                        </tr>
+                        <tr>
+                            <td onclick="changeSelect()" class="active_day">10</td>
+                            <td onclick="changeSelect()" class="active_day">11</td>
+                            <td onclick="changeSelect()" class="active_day">12</td>
+                            <td onclick="changeSelect()" class="active_day">13</td>
+                            <td onclick="changeSelect()" class="active_day">14</td>
+                            <td onclick="changeSelect()" class="active_day">15</td>
+                            <td onclick="changeSelect()" class="active_day">16</td>
+                        </tr>
+                        <tr>
+                            <td onclick="changeSelect()" class="active_day">17</td>
+                            <td onclick="changeSelect()" class="active_day">18</td>
+                            <td onclick="changeSelect()" class="active_day">19</td>
+                            <td onclick="changeSelect()" class="active_day">20</td>
+                            <td onclick="changeSelect()" class="active_day">21</td>
+                            <td onclick="changeSelect()" class="active_day">22</td>
+                            <td onclick="changeSelect()" class="active_day">23</td>
+                        </tr>
+                        <tr>
+                            <td onclick="changeSelect()" class="active_day">24</td>
+                            <td onclick="changeSelect()" class="active_day">25</td>
+                            <td onclick="changeSelect()" class="active_day">26</td>
+                            <td onclick="changeSelect()" class="active_day">27</td>
+                            <td onclick="changeSelect()" class="active_day">28</td>
+                            <td onclick="changeSelect()" class="active_day">29</td>
+                            <td onclick="changeSelect()" class="active_day">30</td>
+                        </tr>
+                        <tr>
+                            <td onclick="changeSelect()" class="active_day">31</td>
+                        </tr>
+                    </thead>
+                    <tbody id="js-calendar-body"></tbody>
+                </table>
+            </div>
+        </div>
     </div>
+    <svg style="visibility:hidden;" width="0" height="0">
+        <filter id="duotone" color-interpolation-filters="sRGB">
+            <feColorMatrix type="matrix" values="0.7 0 0 0 0.3 0.6 0 0 0 0.2 0.3 0 0 0 0.6 0 0 0 1 0"></feColorMatrix>
+        </filter>
+    </svg>
+    <div class="flex-contatiner">
+    </div>
+
 </body>
+<script src="calender.js"></script>
 <script src="main.js"></script>
+
 </html>

@@ -8,7 +8,6 @@ let curr_area = "All"; //the position that user choosen
 let uncompleted_container = document.getElementsByClassName("todo-app__uncompleted")[0];
 let uncompleted_ul = document.createElement("ul");
 let todo_in_each_day = Array.apply(null, Array(31)).map(Number.prototype.valueOf, 0);
-console.log(todo_in_each_day);
 class newItem {
     constructor(Node, iscompleted, date) {
         this.Node = Node;
@@ -25,10 +24,6 @@ function init_clear() {
     clear_element.setAttribute("id", "clear");
     clear_element.setAttribute("onclick", "deleteNode(true)");
     clear_element.innerHTML = "Clear completed";
-}
-
-function init_date() {
-
 }
 
 function assignItem(context) {
@@ -236,8 +231,6 @@ function ShowUncompleted() {
         }
     }
     let body = document.getElementsByTagName("body")[0];
-    console.log(uncompleted_container.offsetTop + uncompleted_container.offsetHeight);
-    console.log(body.offsetHeight);
     if (uncompleted_container.offsetTop + uncompleted_container.offsetHeight > body.offsetHeight - 10) {
 
         uncompleted_container.style.height = (body.offsetHeight - uncompleted_container.offsetTop - 10) + "px";

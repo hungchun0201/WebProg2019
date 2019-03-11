@@ -11,9 +11,6 @@ for (let i = 0; i < active_day.length; ++i) {
     }
 }
 
-console.log(curr_istoday);
-//
-
 function changeSelect() {
     for (let i = 0; i < active_day.length; ++i) {
         if (active_day[i].innerHTML == curr_istoday) {
@@ -21,16 +18,9 @@ function changeSelect() {
             break;
         }
     }
-    console.log(todo_list);
     curr_istoday = parseInt(event.target.innerHTML, 10);
     event.target.classList.add("is-today");
     ShowCurrInterface();
-    console.log(todo_list);
     refresh_count();
-    console.log(todo_list);
-
-}
-
-function ShowActiveTODO() {
 
 }

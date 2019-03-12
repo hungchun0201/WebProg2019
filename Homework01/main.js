@@ -231,8 +231,7 @@ function ShowUncompleted() {
         }
     }
     let body = document.getElementsByTagName("body")[0];
-    if (uncompleted_container.offsetTop + uncompleted_container.offsetHeight > body.offsetHeight - 10) {
-
+    if (uncompleted_container.offsetTop + uncompleted_container.offsetHeight >= body.offsetHeight - 10) {
         uncompleted_container.style.height = (body.offsetHeight - uncompleted_container.offsetTop - 10) + "px";
     } else {
         uncompleted_container.style.height = "";

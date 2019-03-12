@@ -70,11 +70,12 @@ let body = document.getElementsByTagName("body")[0];
     }
 ```
 
-在main.js中，我使用了array的map，設計了一個共有31個element為0的Array。
+在main.js中，我使用了array的map，設計了二個共有31個element為0的Array。
 ```
 let todo_in_each_day = Array.apply(null, Array(31)).map(Number.prototype.valueOf, 0);
+let uncompleted_todo_in_each_day = Array.apply(null, Array(31)).map(Number.prototype.valueOf, 0);
 ```
-這個array紀錄的是各個日子裡面「__完成+未完成__」的todo總量。在加入或刪去todolist元素時，此array皆會進行更新。設計成如此的原因是因為我覺得各式的todo散在各個日子裡，若是因為已完成就被忽略可能不夠人性，有些時候我們會想回去更新各個日子裡的todo，所以這個時候在下方顯示所有曾出現過的todo會較為方便。
+第一個array紀錄的是各個日子裡面「__完成+未完成__」的todo總量。在加入或刪去todolist元素時，此array皆會進行更新。除此之外，第二個array則儲存該日子裡「__未完成__」的todo總量。如此一來在顯示上將更為清楚，令使用者能一目瞭然。
 
 在印出下方區塊的信息時，便是依照todo_in_each_day的值印出。每次更新時皆會重印一次訊息到螢幕上，相較於更新節點的好處是，每次重印都可以依照日期重新sort一次，便於使用者閱讀。
 

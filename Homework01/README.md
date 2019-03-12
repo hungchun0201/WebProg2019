@@ -75,9 +75,9 @@ let body = document.getElementsByTagName("body")[0];
 let todo_in_each_day = Array.apply(null, Array(31)).map(Number.prototype.valueOf, 0);
 let uncompleted_todo_in_each_day = Array.apply(null, Array(31)).map(Number.prototype.valueOf, 0);
 ```
-第一個array紀錄的是各個日子裡面「__完成+未完成__」的todo總量。在加入或刪去todolist元素時，此array皆會進行更新。除此之外，第二個array則儲存該日子裡「__未完成__」的todo總量。如此一來在顯示上將更為清楚，令使用者能一目瞭然。
+第一個array紀錄的是各個日子裡面「__完成+未完成__」的todo總量。在加入或刪去todolist元素時，此array皆會進行更新。除此之外，第二個array則儲存該日子裡「__未完成__」的todo總量。如此一來，同時顯示會更為清楚，令使用者能一目瞭然。
 
-在印出下方區塊的信息時，便是依照todo_in_each_day的值印出。每次更新時皆會重印一次訊息到螢幕上，相較於更新節點的好處是，每次重印都可以依照日期重新sort一次，便於使用者閱讀。
+因此，在印出下方區塊的信息時，便是同時印出uncompleted_todo_in_each_day / todo_in_each_day兩個值印出。每次更新時皆會重印一次訊息到螢幕上，相較於更新已存在節點的好處是，每次重印都可以依照日期重新sort一次，便於使用者閱讀。
 
 
 

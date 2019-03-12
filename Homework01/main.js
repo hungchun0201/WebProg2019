@@ -8,6 +8,7 @@ let curr_area = "All"; //the position that user choosen
 let uncompleted_container = document.getElementsByClassName("todo-app__uncompleted")[0];
 let uncompleted_ul = document.createElement("ul");
 let todo_in_each_day = Array.apply(null, Array(31)).map(Number.prototype.valueOf, 0);
+let uncompleted_todo_in_each_day = Array.apply(null, Array(31)).map(Number.prototype.valueOf, 0);
 class newItem {
     constructor(Node, iscompleted, date) {
         this.Node = Node;
@@ -69,6 +70,7 @@ input.addEventListener('keydown', event => {
         let new_itemNode = assignItem(input.value);
         todo_list.push(new newItem(new_itemNode, false, curr_istoday));
         ++todo_in_each_day[curr_istoday - 1];
+        ++uncompleted_todo_in_each_day[curr_istoday - 1];
         ShowCurrInterface();
         input.value = "";
     }
@@ -86,31 +88,37 @@ function changeState(data) {
     if (todo_list[index]["iscompleted"] === false) {
         todo_list[index]["Node"].children[1].classList.add("todo-app__item-checked");
         todo_list[index]["iscompleted"] = true;
+        --uncompleted_todo_in_each_day[curr_istoday - 1];
     } else {
         todo_list[index]["Node"].children[1].classList.remove("todo-app__item-checked");
         todo_list[index]["iscompleted"] = false;
+        ++uncompleted_todo_in_each_day[curr_istoday - 1];
     }
-    refresh_count();
-    ShowClear();
+    ShowCurrInterface();
 }
 
 
 function deleteNode(all) {
     if (all === false) {
         let index = getIndex(event.target.parentNode);
-        todo_list.splice(index, 1);
+        let delete_node = todo_list.splice(index, 1);
         --todo_in_each_day[curr_istoday - 1];
+        if (delete_node["is_completed"] === false) {
+            --uncompleted_todo_in_each_day[curr_istoday - 1];
+        }
+
     } else {
+        let times = 0;
         for (let i = 0; i < todo_list.length; ++i) {
             if (todo_list[i]["iscompleted"] === true && todo_list[i]["date"] === curr_istoday) {
                 todo_list.splice(i, 1);
                 --i;
+                ++times;
             }
         }
-        todo_in_each_day[curr_istoday - 1] = 0;
+        todo_in_each_day[curr_istoday - 1] -= times;
     }
     ShowCurrInterface();
-    ShowClear();
 }
 
 function getIndex(node) {
@@ -134,6 +142,7 @@ function ShowCurrInterface() {
     }
     refresh_count();
     ShowUncompleted();
+    ShowClear();
 }
 
 function refresh_count() {
@@ -223,10 +232,12 @@ function ShowUncompleted() {
         if (todo_in_each_day[i] !== 0) {
             let new_li = document.createElement("li");
             new_li.setAttribute("id", "date_" + (i + 1));
-            if (todo_in_each_day[i] === 1)
-                new_li.innerHTML = todo_in_each_day[i] + " todo in date " + (i + 1);
+            if (uncompleted_todo_in_each_day[i] === 0) {
+                new_li.innerHTML = "All (" + todo_in_each_day[i] + ") todo(s) were completed in date" + (i + 1) + "!";
+            } else if (uncompleted_todo_in_each_day[i] === 1)
+                new_li.innerHTML = uncompleted_todo_in_each_day[i] + "/" + todo_in_each_day[i] + " todo\xa0\xa0in date " + (i + 1);
             else
-                new_li.innerHTML = todo_in_each_day[i] + " todos in date " + (i + 1);
+                new_li.innerHTML = uncompleted_todo_in_each_day[i] + "/" + todo_in_each_day[i] + " todos\xa0in date " + (i + 1);
             uncompleted_ul.appendChild(new_li);
         }
     }

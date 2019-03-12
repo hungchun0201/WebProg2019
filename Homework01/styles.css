@@ -252,6 +252,10 @@ input[type='checkbox'] {
 
 }
 
+.todo-app__uncompleted ul {
+    padding: 10px;
+}
+
 .todo-app__uncompleted ::-webkit-scrollbar-track-piece {
     background-color: rgba(0, 0, 0, 0.5);
 

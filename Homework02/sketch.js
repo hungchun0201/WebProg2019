@@ -141,8 +141,13 @@ function draw() {
             curr_safe_top = 0;
             curr_safe_low = cvsWrapper.offsetHeight;
         }
+        if (curr_safe_top !== 0) {
 
-        score_display();
+            console.log("curr_safe_top : " + curr_safe_top);
+            console.log("curr_safe_low : " + curr_safe_low);
+        }
+
+
         if (check_GG() !== bird_status.HIT_THE_GROUND) {
             push();
             translate(cvsWrapper.offsetWidth / 2, bird_y);
@@ -179,6 +184,8 @@ function draw() {
                 bg_x = bg_x + cvsWrapper.offsetWidth + bg_vx;
             }
         }
+        score_display();
+
     }
 }
 
@@ -218,6 +225,7 @@ function mousePressed() {
         pipe2_up_y = 0 - getRandom(assets["pipe"][0][0].height) * 3 / 4;
         pipe2_low_y = pipe2_up_y + assets["pipe"][0][0].height + 250;
         has_hit_ceiling = false;
+        die_sound = false;
 
     }
 }
@@ -247,11 +255,9 @@ function check_GG() {
         assets["sound"][2].play();
         has_hit_ceiling = true;
         return bird_status.HIT_THE_CEILING;
-    } else if (bird_y < curr_safe_top || bird_y > curr_safe_low) {
-
+    } else if (bird_y < curr_safe_top || bird_y + assets["bird"][0][0].height > curr_safe_low) {
         bird_state = 0;
         return bird_status.HIT_THE_PIPE;
-
     }
     return bird_status.FLY;
 }

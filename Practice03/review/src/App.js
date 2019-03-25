@@ -1,50 +1,87 @@
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
-import cat from './cat.jpg';
-import dog from './dog.jpg';
-import bunny from './bunny.jpg';
-import Header from './class/header'
-import Article from './class/article';
-import Card from './class/card';
-import Table from './class/table';
+import bgImage from "./image/bg.jpg";
+import bgImage2 from "./image/bg2.jpg";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    
-    this.table = {
-      title: "Dynamic table for easy row/column manipulation",
-      header: ["Type1", "Type2", "Type3", "Type4"],
-      content: [
-        ["R1C1", "R1C2", "R1C3", "R1C4"],
-        ["R2C1", "R2C2", "R2C3", "R2C4"],
-        ["R3C1", "R3C2", "R3C3", "R3C4"],
-      ]
-    };
-  }
-
+class Welcome extends Component {
   render() {
+    let rec = this.props.scoreCard.records.map(e => 
+      <tr>{e.map(
+        g => <td>{g}</td>
+      )}</tr>
+    );
+    var sectionStyle = {
+      width: "100%",
+      height: "100%",
+    // makesure here is String确保这里是一个字符串，以下是es6写法
+      backgroundImage: `url(${bgImage})` 
+	};
+
+	var sectionStyle2 = {
+		width: "100%",
+		height: "300px",
+	  // makesure here is String确保这里是一个字符串，以下是es6写法
+		backgroundImage: `url(${bgImage2})` 
+	  };
+
+	var font = {
+		color:'white',
+		fontSize:40,
+		fontWeight:'bold',
+		textShadowColor:'#C0C0C0',
+		textShadowRadius:2,
+		textShadowOffset:{width:2,height:2},
+		textAlign:'center',
+		margin:50
+	};
+
+	var toBlock1 = function(){
+		window.location.hash = "#block1";
+	}
+	var toBlock2 = function(){
+		window.location.hash = "#block2";
+	}
+	var toBlock3 = function(){
+		window.location.hash = "#block3";
+	}
+	var toBlock4 = function(){
+		window.location.hash = "#block4";
+	}
     return (
-      <div>
-        <Header priority="1" text="THIS IS LEO'S BLOG" />
-        <Header priority="2" text="WARNING! MANY SECRETS!" />
-        
-        <Header priority="4" text="It has been a busy week since the release of master exam result." />
-        <Article text="Everything is like dream come true." />
-
-        <Card img={cat} text="You can wrap anything you want in a link tag; here's an image for example." />
-        <Article text="The cat (Felis catus) is a small carnivorous mammal. It is the only domesticated species in the family Felidae and often referred to as the domestic cat to distinguish it from wild members of the family. The cat is either a house cat, kept as a pet, or a feral cat, freely ranging and avoiding human contact. A house cat is valued by humans for companionship and for its ability to hunt rodents. About 60 cat breeds are recognized by various cat registries. Cats are similar in anatomy to the other felid species, with a strong flexible body, quick reflexes, sharp teeth and retractable claws adapted to killing small prey. They are predators who are most active at dawn and dusk (crepuscular)." />
-        
-        <Card img={dog} text="Once you create a component class, it is very easy to duplicate many cards with same template." />
-        <Article text="The domestic dog (Canis lupus familiaris when considered a subspecies of the wolf or Canis familiaris when considered a distinct species) is a member of the genus Canis (canines), which forms part of the wolf-like canids, and is the most widely abundant terrestrial carnivore. The dog and the extant gray wolf are sister taxa as modern wolves are not closely related to the wolves that were first domesticated, which implies that the direct ancestor of the dog is extinct." />
-
-        <Card img={bunny} text="See! Another card with only one line code." />
-        <Article text="Rabbits are small mammals in the family Leporidae of the order Lagomorpha (along with the hare and the pika). Oryctolagus cuniculus includes the European rabbit species and its descendants, the world's 305 breeds of domestic rabbit. Sylvilagus includes 13 wild rabbit species, among them the 7 types of cottontail. The European rabbit, which has been introduced on every continent except Antarctica, is familiar throughout the world as a wild prey animal and as a domesticated form of livestock and pet."></Article>
-
-        <Table table={this.table} />
-      </div>
+    <body>
+    	<div style = {sectionStyle}>
+    		<table>
+      			<caption> {this.props.scoreCard.name}'s Score </caption>
+      			<thead>
+        			<tr>{ this.props.columnIndex.map(e => (
+        				<th>{e}</th>
+    				))}
+    				</tr>
+  				</thead>
+  				<tbody>
+    				{rec}
+  				</tbody>
+    		</table>
+    	</div>
+		<div id="menu">
+			<ul>
+				<li><a onMouseDown={toBlock1}>選單A</a></li>
+				<li><a onMouseDown={toBlock2}>選單B</a></li>
+				<li><a onMouseDown={toBlock3}>選單C</a></li>
+				<li><a onMouseDown={toBlock4}>選單D</a></li>
+			</ul>
+		</div>
+		{this.props.blockList.map(e => (
+			<div style={font} id={e}>
+				{e}
+				<div style = {sectionStyle2}>
+				</div>
+			</div>
+		))}
+    </body>
     );
   }
 }
 
-export default App;
+export default Welcome;

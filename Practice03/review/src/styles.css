@@ -1,0 +1,131 @@
+table {
+    width: 350px;
+    border-collapse: collapse;
+    margin: 50px auto;
+}
+
+caption {
+    /* color: rgba(255, 255, 255, 0.858); */
+    color: rgba(0, 0, 0, 0.858);
+    font: 20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 60px;
+    border: 40px;
+}
+/* Zebra striping */
+tr:nth-of-type(odd) {
+    background: rgb(167, 203, 236);
+}
+tr:nth-of-type(even) {
+    background: #eee;
+}
+
+th {
+    background: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+td,
+th {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    font-size: 18px;
+}
+
+body {
+    background: black;
+}
+
+#menu {
+    /* 選單大小 */
+    width:100%;
+    height:50px;
+    font-size:35px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+#menu ul {
+    /* 取消ul樣式符號 */
+    list-style-type:none;
+    /* 重設ul邊界與留白為零 */
+    margin:0;
+    padding:0;
+    /* 內有浮動元件時，需設overflow才會自動調整大小 */
+    overflow:auto;
+    background:#6f6f6f;
+}
+
+#menu ul li {
+    /* 利用float讓第一層li水平排列 */
+    float:left;
+    color:#000000;
+    text-decoration:none;
+    line-height: 50px;
+}
+#menu ul li a {
+    /* 將a改為區塊元件，以便指定寬高 */
+    display:block;
+    /* 這邊也要設float，否則IE6會以100%寬度顯示 */
+    float:left;
+    /* 固定高度 */
+    height:50px;
+    width: 346px;
+    text-align: center;
+}
+
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+    table {
+        width: 100%;
+    }
+
+    /* Force table to not be like tables anymore */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        border: 1px solid #ccc;
+    }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        /* Label the data */
+        content: attr(data-column);
+
+        color: #000;
+        font-weight: bold;
+    }
+}

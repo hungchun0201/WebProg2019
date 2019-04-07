@@ -72,6 +72,8 @@ class CalcApp extends React.Component {
     }
     if (event.target.innerHTML === "=") {
       this.wasLastSymbolEqual = true;
+      this.refreshWindow = true;
+
     }
     if (this.symbol === "X") {
       if (this.hasRefreshSecond === false) {

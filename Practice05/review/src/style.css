@@ -1,0 +1,78 @@
+/* layout */
+.calc-container {
+  width: 240px;
+  height: 439px;
+  margin: auto;
+  background-color: black;
+}
+
+.calc-output {
+  height: 139px;
+  position: relative;
+}
+
+.calc-display {
+  position: absolute;
+  bottom: 5px;
+  right: 15px;
+  font-size: 40px;
+  font-family: 'Lato', sans-serif;
+  color: white;
+}
+
+.calc-row {
+  height: 60px;
+}
+
+.calc-btn {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  font-size: 25px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border: 0.5px solid #a08c88;
+  background-color: #c8c9cb;
+}
+
+.calc-btn:focus{
+  outline-color: rgb(116, 54, 3);
+}
+
+.bigger-btn {
+  width: 120px;
+  background-color: #f0eeee;
+}
+
+.calc-number {
+  background-color: #f0eeee;
+}
+
+.calc-operator {
+  color: white;
+  background-color: #f58c00;
+}
+
+.calc-operator:focus{
+  color: #f58c00;
+  background-color: white;
+  outline: none;
+}
+
+
+/* clearfix
+ * http://stackoverflow.com/questions/211383/which-method-of-clearfix-is-best
+ */
+.clearfix:before,
+.clearfix:after {
+  content:"";
+  display:table;
+}
+.clearfix:after {
+  clear:both;
+}
+.clearfix {
+  zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}

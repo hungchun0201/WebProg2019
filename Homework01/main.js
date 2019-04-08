@@ -7,7 +7,7 @@ let interface_ul = Object; //ul tag
 let curr_area = "All"; //the position that user choosen
 let uncompleted_container = document.getElementsByClassName("todo-app__uncompleted")[0];
 let uncompleted_ul = document.createElement("ul");
-let todo_in_each_day = Array.apply(null, Array(31)).map(Number.prototype.valueOf, 0);
+let todo_in_each_day = Array.apply(null, Array(31)).map(i => 0);
 let uncompleted_todo_in_each_day = Array.apply(null, Array(31)).map(Number.prototype.valueOf, 0);
 class newItem {
     constructor(Node, iscompleted, date) {

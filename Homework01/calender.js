@@ -22,5 +22,4 @@ function changeSelect() {
     event.target.classList.add("is-today");
     ShowCurrInterface();
     refresh_count();
-
 }

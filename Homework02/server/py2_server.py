@@ -57,9 +57,9 @@ if __name__ == "__main__":
     httpd = SocketServer.TCPServer(("", PORT), Handler)
     httpd.allow_reuse_address = True
 
-    print "serving at port", PORT
+    print("serving at port", PORT)
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
-        print "\rShutting down..."
+        print("\rShutting down...")
         httpd.shutdown()

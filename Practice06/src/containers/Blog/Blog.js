@@ -4,6 +4,7 @@ import { NavLink, Switch, Route, Redirect } from "react-router-dom";
 import Authors from "./Authors/Authors";
 import Posts from "./Posts/Posts";
 import PostRender from "./Posts/PostRender";
+import AuthorRender from "./Authors/Authors";
 // import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -26,6 +27,8 @@ export default class Blog extends Component {
                     <Route exact path="/posts" component={Posts} />
                     <Route exact path="/authors" component={Authors} />
                     <Route path="/posts/:id?" component={PostRender} />
+                    <Route path="/authors/:id?" component={AuthorRender} />
+
                     <Redirect from="/home" to="/" />
                 </Switch>
             </div>
